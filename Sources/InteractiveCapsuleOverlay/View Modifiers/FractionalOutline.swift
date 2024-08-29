@@ -14,12 +14,14 @@ struct FractionalOutline: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .overlay {
-                Capsule(style: .continuous)
-                    .trim(from: 0, to: self.completionAmount)
-                    .fill(.clear)
-                    .stroke(self.accentColor, lineWidth: 2.0)
-            }
+            .overlay(
+                GeometryReader { geometry in
+                    Capsule(style: .continuous)
+                        .trim(from: 0, to: self.completionAmount)
+                        .stroke(self.accentColor, lineWidth: 2.0)
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                }
+            )
             .animation(.linear(duration: 1.0), value: completionAmount)
     }
 

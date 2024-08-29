@@ -58,7 +58,12 @@ struct InteractiveCapsuleOverlayView: View {
     func dismissCapsule() {
         withAnimation {
             self.currentConfig = nil
-        } completion: {
+        }
+        
+        // 使用 Task 来模拟 completion
+        Task { @MainActor in
+            // 等待动画完成
+            try? await Task.sleep(for: .seconds(0.3))  // 假设动画持续 0.3 秒
             self.numStrikes = 0
         }
     }
@@ -89,7 +94,7 @@ struct InteractiveCapsuleOverlayView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: capsuleAlignment)
             .animation(.bouncy, value: currentConfig)
         }
-        .onChange(of: currentConfig) {
+        .onChange(of: currentConfig) { currentConfig in
             guard currentConfig != nil else { return }
 
             // ensures outline resets with no animation when switching between configs

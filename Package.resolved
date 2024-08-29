@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "pow",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/EmergeTools/Pow",
+      "state" : {
+        "revision" : "f0d0f3e72d42beaf2b01f1cb798e1b55902814eb",
+        "version" : "1.0.4"
+      }
+    },
+    {
+      "identity" : "time",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/davedelong/time",
+      "state" : {
+        "revision" : "b652fe17d13dca2ed5f3aa0209b309de4a10821d",
+        "version" : "1.0.2"
+      }
+    }
+  ],
+  "version" : 2
+}
